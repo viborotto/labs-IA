@@ -1,3 +1,8 @@
+# Integrantes:
+    
+#     David Pianura da Silva - 11201810096
+#     Dimas de Castro filho - 11201811282
+#     Vittoria Ariel dos Santos Borotto - 11201811288
 
 import copy
 
@@ -74,7 +79,7 @@ class Estado:
 class Node:
     # A arvore é imaginada como uma lista duplamente ligada de outras listas, onde cada nó é uma lista de expansoes de seu nó pai
     # O anterior diz respeito ao nó que gerou o nó presente
-    # O próximo diz respeito aos nós que foram gerados à partir do nó presente
+    # O próximo diz respeito aos nós que serão gerados à partir do nó presente
     def __init__(self, estados, anterior, proximo):
         self.estados = estados
         self.anterior = anterior
@@ -253,6 +258,11 @@ inicio = Estado(config_ini, None, 0, True)
 
 raiz = Node([inicio], None, None)
 
+print("\nINTEGRANTES:")
+print("David Pianura da Silva - 11201810096")
+print("Dimas de Castro filho - 11201811282")
+print("Vittoria Ariel dos Santos Borotto - 11201811288\n")
+
 print("Estado Inicial:")
 inicio.print_estado()
 
@@ -297,3 +307,18 @@ while (passo != None and configuracao != objetivo):
     escolhido = copy.deepcopy(menor_f)
     escolhido.print_estado()
     passo = passo.proximo
+    
+print("\nCaminho de resolução")
+
+passo = escolhido
+sol = []
+while (passo is not None):
+    sol.append(passo)
+    passo = passo.pai
+
+sol.reverse()
+
+for e in sol:
+    e.print_estado()
+
+
